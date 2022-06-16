@@ -12,6 +12,7 @@ namespace BankClient
         public static MongoDB.Driver.MongoClient m_Client;
         public static MongoDB.Driver.IMongoDatabase m_Database;
         public static MongoDB.Driver.IMongoCollection<User> m_Collection;
-        // public static string  test = "nu s-a schimbat";
+        public static User global_user;
+        public static string  text = "nu s-a schimbat";
     }
 }
