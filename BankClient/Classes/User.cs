@@ -12,6 +12,7 @@ internal class User
     public string Country { get; set; }
     public string First_Name { get; set; }
     public string Last_Name { get; set; }
+    public string IBAN { get; set; }
     public User()
     {
     }

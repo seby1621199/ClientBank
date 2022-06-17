@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using MongoDB.Driver;
@@ -46,6 +47,11 @@ namespace BankClient
                 {
                     result_text.Visibility = Visibility.Visible;
                     result_text.Content = "Login succesful.";
+                    Thread.Sleep(3000);
+                    UserMenu userMenu = new UserMenu();
+                    userMenu.Show();
+                    this.Close();
+
                 }
                 else
                 {
@@ -94,11 +100,19 @@ namespace BankClient
 
             if (search == null)
             {
-                result_text.Visibility = Visibility.Visible;
-                result_text.Content = "Register succesful.";
-                Globals.m_Collection.InsertOne(user);
-                Globals.global_user = user;
-                Final_step_register();
+                if (Encryption.Decrypt(user.Password).Length < 6)
+                {
+                    result_text.Visibility = Visibility.Visible;
+                    result_text.Content = "Password must contain at least 6 characters.";
+                }
+                else
+                {
+                    result_text.Visibility = Visibility.Visible;
+                    result_text.Content = "Register succesful.";
+                    Globals.m_Collection.InsertOne(user);
+                    Globals.global_user = user;
+                    Final_step_register();
+                }
             }
             else
             {
