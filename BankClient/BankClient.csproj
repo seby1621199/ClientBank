@@ -155,10 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserMenu.xaml.cs">
+    <Compile Include="Pagess\UserMenu.xaml.cs">
       <DependentUpon>UserMenu.xaml</DependentUpon>
     </Compile>
-    <Page Include="Login.xaml">
+    <Page Include="Pagess\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -167,20 +167,20 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Class.cs" />
-    <Compile Include="RegisterFinal.xaml.cs">
+    <Compile Include="Pagess\RegisterFinal.xaml.cs">
       <DependentUpon>RegisterFinal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\User.cs" />
-    <Compile Include="Encrypt.cs" />
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="Scripts\Encrypt.cs" />
+    <Compile Include="Pagess\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="RegisterFinal.xaml">
+    <Page Include="Pagess\RegisterFinal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserMenu.xaml">
+    <Page Include="Pagess\UserMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,8 +207,8 @@
     <None Include="Core\Compression\Snappy\lib\osx\libsnappy64.dylib" />
     <None Include="Core\Compression\Zstandard\lib\linux\libzstd.so" />
     <None Include="Core\Compression\Zstandard\lib\osx\libzstd.dylib" />
-    <None Include="libmongocrypt.dylib" />
-    <None Include="libmongocrypt.so" />
+    <None Include="Scripts\libmongocrypt.dylib" />
+    <None Include="Scripts\libmongocrypt.so" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -222,12 +222,9 @@
     <Content Include="Core\Compression\Snappy\lib\win\snappy32.dll" />
     <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
     <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
-    <Resource Include="Images\check_balance_icon.png" />
-    <Resource Include="Images\transfer_money_icon.png" />
-    <Content Include="mongocrypt.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\background.jpg" />
+    <Resource Include="Pagess\image\background.jpg" />
+    <Resource Include="Pagess\image\account-balance.png" />
+    <Content Include="Scripts\mongocrypt.dll" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -241,6 +238,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MongoDB.Libmongocrypt.1.5.2\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.5.2\build\MongoDB.Libmongocrypt.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

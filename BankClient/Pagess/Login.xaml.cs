@@ -14,12 +14,16 @@ namespace BankClient
     /// </summary>
     public partial class Login : Window
     {
-        private void DB()
+        public Login()
+        {
+            InitializeComponent();
+            DB();
+        }
+        public void DB()
         {
             Globals.m_Client = new MongoClient("mongodb+srv://bank:Drept1234!@cluster0.zwmtb.mongodb.net/Cluster0?retryWrites=true&w=majority");
             Globals.m_Database = Globals.m_Client.GetDatabase("bank");
             Globals.m_Collection = Globals.m_Database.GetCollection<User>("bank");
-            Globals.text = "ttttt";
 
         }
 
@@ -28,12 +32,12 @@ namespace BankClient
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             /* Conectarea la  */
-            DB();
+            //DB();
             User user = new User
             {
                 Username = user_input.Text,
                 Balance = 0,
-                Password = Encryption.Encrypt(password_input.Text)
+                Password = Encryption.Encrypt(password_input.Password.ToString())
             };
             ;
 
@@ -47,7 +51,7 @@ namespace BankClient
                 {
                     result_text.Visibility = Visibility.Visible;
                     result_text.Content = "Login succesful.";
-                    Thread.Sleep(3000);
+                    Globals.global_user = search;
                     UserMenu userMenu = new UserMenu();
                     userMenu.Show();
                     this.Close();
@@ -69,29 +73,16 @@ namespace BankClient
 
         }
 
-        private void Final_step_register()
-        {
-            DB();
-            RegisterFinal registerFinal = new RegisterFinal();
-            registerFinal.Show();
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-                DragMove();
-
-        }
 
         private void Register_button_Click(object sender, RoutedEventArgs e)
         {
             /* Conectarea la DB */
-            DB();
+            //DB();
             User user = new User
             {
                 Username = user_input.Text,
                 Balance = 0,
-                Password = Encryption.Encrypt(password_input.Text)
+                Password = Encryption.Encrypt(password_input.Password.ToString())
             };
             ;
 
@@ -120,6 +111,20 @@ namespace BankClient
                 result_text.Content = "User already exist.";
 
             }
+
+        }
+
+        private void Final_step_register()
+        {
+            //DB();
+            RegisterFinal registerFinal = new RegisterFinal();
+            registerFinal.Show();
+        }
+
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
 
         }
     }
