@@ -68,11 +68,17 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Offset="0.333" Color="#FF3378FF"/>
+            <GradientStop Color="White" Offset="1"/>
+            <GradientStop Offset="0.989" Color="#FF9442FE"/>
+        </LinearGradientBrush>
+    </Window.Background>
 
-        <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="image/background.jpg" AlignmentY="Center" AlignmentX="Center"/>
-        </Grid.Background>
+    <Border
+            CornerRadius="8">
+        <Grid >
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="114,151,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.376,0.98"/>
         <Label Content="Last Name:" HorizontalAlignment="Left" Margin="114,177,0,0" VerticalAlignment="Top" Foreground="White"/>
         <Label Content="Country:" HorizontalAlignment="Left" Margin="121,207,0,0" VerticalAlignment="Top" Foreground="White"/>
@@ -100,6 +106,8 @@
             </Button.Background>
         </Button>
         <Label x:Name="register_final_txt" Content="Registration is complete." HorizontalAlignment="Center" Margin="0,44,0,0" VerticalAlignment="Top" Foreground="#FFE7C3FC" Visibility="Hidden"/>
-    </Grid>
+            <Grid VerticalAlignment="Center"/>
+        </Grid>
+    </Border>
 </Window>
 

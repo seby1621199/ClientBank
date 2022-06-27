@@ -26,6 +26,6 @@
             <Grid/>
             <GridSplitter Height="100" Width="44" HorizontalAlignment="Left"/>
         </Menu>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="292,184,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Transfer" HorizontalAlignment="Left" Margin="292,184,0,0" VerticalAlignment="Top" Click="Button_Click"/>
     </Grid>
 </Window>

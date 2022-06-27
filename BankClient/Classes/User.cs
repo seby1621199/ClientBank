@@ -37,25 +37,28 @@ internal class User
 
 
     }
-    public void Transfer(User user2, uint money_transfer)
-    {
-        /* user1 transfer money to user2 */
-        this.Balance -= money_transfer;
-        user2.Balance += money_transfer;
-        Globals.m_Client = new MongoClient("mongodb+srv://bank:Drept1234!@cluster0.zwmtb.mongodb.net/Cluster0?retryWrites=true&w=majority");
-        Globals.m_Database = Globals.m_Client.GetDatabase("bank");
-        Globals.m_Collection = Globals.m_Database.GetCollection<User>("bank");
-        // User search = Globals.m_Collection.Find(filter).FirstOrDefault();
+    //public void Transfer(User user2, uint money_transfer)
+    //{
 
 
-        /* IF BALANCE < MONEY TRANSFER RESOLVE ERRROR */
-        if (this.Balance >= money_transfer)
-        {
-            this.Update();
-            user2.Update();
-        }
+        
+       
+    //    this.Balance -= money_transfer;
+    //    user2.Balance += money_transfer;
+    //    Globals.m_Client = new MongoClient("mongodb+srv://bank:Drept1234!@cluster0.zwmtb.mongodb.net/Cluster0?retryWrites=true&w=majority");
+    //    Globals.m_Database = Globals.m_Client.GetDatabase("bank");
+    //    Globals.m_Collection = Globals.m_Database.GetCollection<User>("bank");
+    //    // User search = Globals.m_Collection.Find(filter).FirstOrDefault();
 
-    }
+
+    //    /* IF BALANCE < MONEY TRANSFER RESOLVE ERRROR */
+    //    if (this.Balance >= money_transfer)
+    //    {
+    //        this.Update();
+    //        user2.Update();
+    //    }
+
+    //}
 
     public void Load_DB()
     {
@@ -71,6 +74,30 @@ internal class User
         //var update = Builders<User>.Update.Set("Balance", this.Balance);
         var update = Builders<User>.Update.Set("Balance", Globals.global_user.Balance).Set("First_Name", Globals.global_user.First_Name).Set("Last_Name", Globals.global_user.Last_Name).Set("IBAN", Globals.global_user.IBAN).Set("Password", Globals.global_user.Password).Set("Country", Globals.global_user.Country);
         Globals.m_Collection.UpdateOne(filter, update);
+    }
+
+    public void Deposit(uint money_deposit)
+    {
+        this.Balance += money_deposit;
+        this.Update();
+    }
+    public void WithDraw(uint money_withdraw)
+    {
+        this.Balance -= money_withdraw;
+        this.Update();
+    }
+    public void Transfer(User user2, uint money_transfer)
+    {
+        this.Balance -= money_transfer;
+        user2.Balance += money_transfer;
+        this.Update();
+        user2.Update();
+    }
+
+    public void Delete()
+    {
+        var filter = Builders<User>.Filter.Eq("Username", this.Username);
+        Globals.m_Collection.DeleteOne(filter);
     }
 
 

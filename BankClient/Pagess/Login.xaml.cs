@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using System.Threading;
+﻿using MongoDB.Driver;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using MongoDB.Driver;
 
 
 
@@ -16,23 +16,22 @@ namespace BankClient
     {
         public Login()
         {
+
             InitializeComponent();
             DB();
+            register_final.Visibility = Visibility.Hidden;
         }
         public void DB()
         {
             Globals.m_Client = new MongoClient("mongodb+srv://bank:Drept1234!@cluster0.zwmtb.mongodb.net/Cluster0?retryWrites=true&w=majority");
             Globals.m_Database = Globals.m_Client.GetDatabase("bank");
             Globals.m_Collection = Globals.m_Database.GetCollection<User>("bank");
-
         }
 
 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            /* Conectarea la  */
-            //DB();
             User user = new User
             {
                 Username = user_input.Text,
@@ -41,7 +40,6 @@ namespace BankClient
             };
             ;
 
-            //Globals.m_Collection.InsertOne(user);
             var filter = Builders<User>.Filter.Eq("Username", user.Username);
             User search = Globals.m_Collection.Find(filter).FirstOrDefault();
 
@@ -76,8 +74,6 @@ namespace BankClient
 
         private void Register_button_Click(object sender, RoutedEventArgs e)
         {
-            /* Conectarea la DB */
-            //DB();
             User user = new User
             {
                 Username = user_input.Text,
@@ -116,15 +112,35 @@ namespace BankClient
 
         private void Final_step_register()
         {
-            //DB();
-            RegisterFinal registerFinal = new RegisterFinal();
-            registerFinal.Show();
+            this.Width = 640;
+            register_final.Visibility = Visibility.Visible;
         }
+
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+
+        }
+
+        private void test_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Pagess.MenuClient menuClient = new Pagess.MenuClient();
+            menuClient.Show();
+
+        }
+
+        private void button_finish_register_Click(object sender, RoutedEventArgs e)
+        {
+            Random rnd = new Random();
+            Globals.global_user.First_Name = first_name_input.Text.ToUpper();
+            Globals.global_user.Last_Name = last_name_input.Text.ToUpper();
+            Globals.global_user.Country = country_input.Text.ToUpper();
+            Globals.global_user.IBAN = Globals.global_user.Country[0].ToString() + Globals.global_user.Country[1].ToString() + rnd.Next(10, 99) + "BNK" + Globals.global_user.First_Name[0].ToString() + Globals.global_user.Last_Name[0].ToString() + rnd.Next(10000000, 99999999);
+            Globals.global_user.Update();
+            register_final.Visibility = Visibility.Hidden;
+            this.Width = 320;
 
         }
     }

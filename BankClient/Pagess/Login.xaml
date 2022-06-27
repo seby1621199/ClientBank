@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankClient"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800"
+        Title="Login" Height="359" Width="320"
         WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
@@ -67,14 +67,18 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF9442FE" Offset="0.44"/>
+            <GradientStop Color="#FF3378FF" Offset="0.02"/>
+        </LinearGradientBrush>
+    </Window.Background>
 
 
     <Border BorderBrush="#FF000000" BorderThickness="1" CornerRadius="8">
-        <Grid>
-            <Grid.Background>
-                <ImageBrush Stretch="UniformToFill" ImageSource="image/background.jpg" AlignmentY="Center" AlignmentX="Center"/>
-            </Grid.Background>
-            <Button Style="{DynamicResource RounderButtonStyle}" x:Name="Button" Content="Login" HorizontalAlignment="Left" Margin="119,179,0,0" VerticalAlignment="Top" Width="50" UseLayoutRounding="True" IsEnabled="True" Click="Button_Click" RenderTransformOrigin="1.049,-3.292" FontStyle="Normal" Height="19" Foreground="White" BorderThickness="2,2,2,2">
+        <Grid HorizontalAlignment="Left" Width="256">
+
+            <Button Style="{DynamicResource RounderButtonStyle}" x:Name="Button" Content="Login" HorizontalAlignment="Left" Margin="119,185,0,0" VerticalAlignment="Top" Width="50" UseLayoutRounding="True" IsEnabled="True" Click="Button_Click" RenderTransformOrigin="1.049,-3.292" FontStyle="Normal" Height="19" Foreground="White" BorderThickness="2,2,2,2" IsTabStop="False">
                 <Button.Background>
                     <SolidColorBrush Color="#FFF9F9F9" Opacity="0"/>
                 </Button.Background>
@@ -100,11 +104,53 @@
             <Label x:Name="user_txt" Content="User:" HorizontalAlignment="Left" Margin="72,114,0,0" VerticalAlignment="Top" BorderBrush="White" FontFamily="Book Antiqua" FontSize="14" Foreground="#FFF9F9FC"/>
             <Label x:Name="password_txt" Content="Password:" HorizontalAlignment="Left" Margin="40,137,0,0" VerticalAlignment="Top" BorderBrush="White" FontFamily="Book Antiqua" FontSize="14" Foreground="White" RenderTransformOrigin="0.092,0.548"/>
             <Label x:Name="result_text" Content="Label" HorizontalAlignment="Left" Margin="119,216,0,0" VerticalAlignment="Top" Visibility="Hidden" Foreground="#FFB1C4FF" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
-            <Button x:Name="Register_button" Content="Register" HorizontalAlignment="Left" Margin="189,179,0,0" VerticalAlignment="Top" Height="19" Width="57" Click="Register_button_Click" Style="{DynamicResource RounderButtonStyle}" BorderThickness="2,2,2,2" Foreground="White" BorderBrush="White">
+            <Button x:Name="Register_button" Content="Register" HorizontalAlignment="Left" Margin="189,185,0,0" VerticalAlignment="Top" Height="19" Width="57" Click="Register_button_Click" Style="{DynamicResource RounderButtonStyle}" BorderThickness="2,2,2,2" Foreground="White" BorderBrush="White">
                 <Button.Background>
                     <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
                 </Button.Background>
             </Button>
+            <TextBlock HorizontalAlignment="Left" Margin="103,61,0,0" TextWrapping="Wrap" Text="Welcome" VerticalAlignment="Top" Foreground="#FFFAFAFA" FontSize="30"/>
+            <Button x:Name="test_btn" Content="Button" HorizontalAlignment="Left" Margin="28,292,0,0" VerticalAlignment="Top" Click="test_btn_Click"/>
+            <Grid x:Name="register_final" Margin="284,0,-356,0" Visibility="Hidden" >
+                <Image Height="300" Width="300" Source="/Pagess/image/line.png" Margin="-108,21,136,20" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Label Content="First Name:" HorizontalAlignment="Left" Margin="64,84,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.376,0.98"/>
+                <Label Content="Last Name:" HorizontalAlignment="Left" Margin="64,110,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Label Content="Country:" HorizontalAlignment="Left" Margin="71,140,0,0" VerticalAlignment="Top" Foreground="White"/>
+                <Button Style="{DynamicResource RounderButtonStyle}" x:Name="button_finish_register" Content="Finish" HorizontalAlignment="Left" Margin="136,182,0,0" VerticalAlignment="Top" Click="button_finish_register_Click" Foreground="White" Width="51" FontFamily="Franklin Gothic Book" Padding="1,1,1,1" BorderThickness="2,2,2,2" BorderBrush="White">
+                    <Button.Background>
+                        <SolidColorBrush Color="#FFDDDDDD" Opacity="0"/>
+                    </Button.Background>
+                </Button>
+                <Label x:Name="register_final_txt" Content="Registration is complete." HorizontalAlignment="Center" Margin="0,44,0,0" VerticalAlignment="Top" Foreground="#FFE7C3FC" Visibility="Hidden"/>
+                <Grid VerticalAlignment="Center"/>
+                <TextBox x:Name="first_name_input" HorizontalAlignment="Left" Margin="136,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderThickness="0,0,0,2" Foreground="White">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0"/>
+                    </TextBox.Background>
+                    <TextBox.BorderBrush>
+                        <SolidColorBrush Color="White" Opacity="1"/>
+                    </TextBox.BorderBrush>
+                </TextBox>
+                <TextBox x:Name="last_name_input" HorizontalAlignment="Left" Margin="136,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderBrush="White" BorderThickness="0,0,0,2" Foreground="White">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0"/>
+                    </TextBox.Background>
+                </TextBox>
+                <TextBox x:Name="country_input" HorizontalAlignment="Left" Margin="136,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" BorderThickness="0,0,0,2" BorderBrush="White" Foreground="White">
+                    <TextBox.Background>
+                        <SolidColorBrush Color="White" Opacity="0"/>
+                    </TextBox.Background>
+                </TextBox>
+            </Grid>
 
         </Grid>
     </Border>
