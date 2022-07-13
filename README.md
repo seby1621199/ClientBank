@@ -7,7 +7,7 @@
 <li><del>-Register Menu
 <li><del>-Login Menu
 <li><del>IBAN
-<li>-User Menu
+<li><deL>-User Menu
 <li>-Search for transfers
 <li>-Select Silver/Gold/Diamond
 <li>-Deposit
