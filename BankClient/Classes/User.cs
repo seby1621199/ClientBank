@@ -1,5 +1,6 @@
 ﻿using System;
 using BankClient;
+using BankClient.Classes;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 
@@ -17,6 +18,7 @@ internal class User
     public string First_Name { get; set; }
     public string Last_Name { get; set; }
     public string IBAN { get; set; }
+    public Card Card { get; set; }
     public User()
     {
     }
@@ -64,15 +66,15 @@ internal class User
     {
         Globals.m_Client = new MongoClient("mongodb+srv://bank:Drept1234!@cluster0.zwmtb.mongodb.net/Cluster0?retryWrites=true&w=majority");
         Globals.m_Database = Globals.m_Client.GetDatabase("bank");
-        Globals.m_Collection = Globals.m_Database.GetCollection<User>("bank");
+        Globals.m_Collection = Globals.m_Database.GetCollection<User>("users");
     }
 
     public void Update()
     {
 
         var filter = Builders<User>.Filter.Eq("Username", this.Username);
-        //var update = Builders<User>.Update.Set("Balance", this.Balance);
-        var update = Builders<User>.Update.Set("Balance", Globals.global_user.Balance).Set("First_Name", Globals.global_user.First_Name).Set("Last_Name", Globals.global_user.Last_Name).Set("IBAN", Globals.global_user.IBAN).Set("Password", Globals.global_user.Password).Set("Country", Globals.global_user.Country);
+        //var update = Builders<User>.Update.Set("Balance", this.Balance)
+        var update = Builders<User>.Update.Set("Balance", this.Balance).Set("First_Name", this.First_Name).Set("Last_Name", this.Last_Name).Set("IBAN", this.IBAN).Set("Password", this.Password).Set("Country", this.Country);
         Globals.m_Collection.UpdateOne(filter, update);
     }
 

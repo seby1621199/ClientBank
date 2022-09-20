@@ -1,0 +1,39 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BankClient.Pagess"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        x:Class="BankClient.Pagess.RegisterUser"
+        mc:Ignorable="d"
+        Title="RegisterUser" Height="510" Width="350"   WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+
+    <materialDesign:Card Margin="10,10,10,10" UniformCornerRadius="15" Background="#FF302F2F">
+        <StackPanel Margin="10" >
+            <Button x:Name="back_button" Background="{x:Null}" Margin="10,10,0,-40" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0,0,0,0" Click="back_button_Click" Height="30" Width="30" MouseEnter="btn_back_MouseEnter"  MouseLeave="btn_back_MouseLeave">
+                <materialDesign:PackIcon x:Name="back_icon"  Kind="AccountArrowLeftOutline" Width="30" Height="30" Foreground="#FFA09D9D"   HorizontalAlignment="Left" VerticalAlignment="Center" />
+            </Button>
+            <materialDesign:PackIcon Kind="Bank" Width="50" Height="50"  Margin="0,15,0,0" HorizontalAlignment="Center" >
+                <materialDesign:PackIcon.Foreground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF673AB7"/>
+                        <GradientStop Color="#FF3D1C78" Offset="0.995"/>
+                    </LinearGradientBrush>
+                </materialDesign:PackIcon.Foreground>
+            </materialDesign:PackIcon>
+            <TextBlock TextWrapping="Wrap" Text="Virtual Bank" TextAlignment="Center" Foreground="WhiteSmoke" FontSize="40" FontWeight="Bold" FontFamily="Yu Gothic UI" Margin="0,10,0,0"  />
+            <TextBox x:Name="input_username"  Width="270" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="Username" BorderBrush="SeaGreen" FontSize="15px" Padding="4,4,4,4" Margin="0,25,0,0"/>
+            <PasswordBox x:Name="input_password"  Width="270" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="Password" BorderBrush="SeaGreen" FontSize="15px" Padding="4,4,4,4" Margin="0,18,0,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,18,0,0"  >
+                <TextBox x:Name="input_firstName"  Width="130" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="First Name" BorderBrush="SeaGreen" FontSize="15px" VerticalAlignment="Center" Padding="4,4,4,4" Margin="10,0,7,0"/>
+                <TextBox x:Name="input_lastName"  Width="130" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="Last Name" BorderBrush="SeaGreen" FontSize="15px" Padding="4,4,4,4" Margin="7,0,10,0"/>
+            </StackPanel>
+            <TextBox x:Name="input_country"  Width="270" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="Country" BorderBrush="SeaGreen" FontSize="15px" Padding="4,4,4,4" HorizontalAlignment="Center" Margin="0,18,0,0"/>
+            <Button x:Name="button_register" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="120px" Content="REGISTER" FontSize="14" Height="32"  Margin="0,60,0,0" Click="button_register_Click"/>
+            <TextBlock x:Name="result_text" TextWrapping="Wrap" Foreground="WhiteSmoke" HorizontalAlignment="Center" Margin="10,15,10,0" Opacity="0.7"/>
+        </StackPanel>
+
+    </materialDesign:Card>
+
+</Window>

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BankClient.Pagess
+namespace BankClient
 {
     /// <summary>
-    /// Interaction logic for Menu_Transfer.xaml
+    /// Interaction logic for Page1.xaml
     /// </summary>
-    public partial class Menu_Transfer : UserControl
+    public partial class Page1 : Page
     {
-        public Menu_Transfer()
+        public Page1()
         {
             InitializeComponent();
         }

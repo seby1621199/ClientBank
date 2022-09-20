@@ -164,66 +164,74 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="Xceed.Wpf.Toolkit">
-      <HintPath>..\..\Menu\packages\Xceed.Wpf.Toolkit.4.4.22258.9000\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Pagess\MenuClient.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Classes\Card.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pagess\MenuClient.Designer.cs">
-      <DependentUpon>MenuClient.cs</DependentUpon>
+    <Compile Include="Pagess\Deposit.xaml.cs">
+      <DependentUpon>Deposit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pagess\Menu_Pages\Transfer.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Pagess\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pagess\Menu_Pages\Transfer.Designer.cs">
-      <DependentUpon>Transfer.cs</DependentUpon>
+    <Compile Include="Pagess\MenuUser.xaml.cs">
+      <DependentUpon>MenuUser.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pagess\Menu_Pages\Withdraw.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="Pagess\RegisterUser.xaml.cs">
+      <DependentUpon>RegisterUser.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pagess\Menu_Pages\Withdraw.Designer.cs">
-      <DependentUpon>Withdraw.cs</DependentUpon>
+    <Compile Include="Pagess\Transfer.xaml.cs">
+      <DependentUpon>Transfer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pagess\Menu_Transfer.xaml.cs">
-      <DependentUpon>Menu_Transfer.xaml</DependentUpon>
+    <Compile Include="Pagess\UserLogin.xaml.cs">
+      <DependentUpon>UserLogin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pagess\UserMenu.xaml.cs">
-      <DependentUpon>UserMenu.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Pagess\Login.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Class.cs" />
-    <Compile Include="Pagess\RegisterFinal.xaml.cs">
-      <DependentUpon>RegisterFinal.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Classes\User.cs" />
-    <Compile Include="Scripts\Encrypt.cs" />
-    <Compile Include="Pagess\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="Pagess\Withdraw.xaml.cs">
+      <DependentUpon>Withdraw.xaml</DependentUpon>
     </Compile>
-    <Page Include="Pagess\Menu_Transfer.xaml">
+    <Compile Include="Scripts\Encrypt.cs" />
+    <Page Include="Page1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pagess\RegisterFinal.xaml">
+    <Page Include="Pagess\Deposit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pagess\UserMenu.xaml">
+    <Page Include="Pagess\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pagess\MenuUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pagess\RegisterUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pagess\Transfer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pagess\UserLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pagess\Withdraw.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -242,15 +250,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Pagess\MenuClient.resx">
-      <DependentUpon>MenuClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pagess\Menu_Pages\Transfer.resx">
-      <DependentUpon>Transfer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pagess\Menu_Pages\Withdraw.resx">
-      <DependentUpon>Withdraw.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -274,11 +273,8 @@
     <Content Include="Core\Compression\Snappy\lib\win\snappy32.dll" />
     <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
     <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
-    <Resource Include="Pagess\image\background.jpg" />
-    <Resource Include="Pagess\image\account-balance.png" />
     <None Include="Resources\account-balance.png" />
     <None Include="Resources\transfer_money_icon.png" />
-    <Resource Include="Pagess\image\line.png" />
     <Content Include="Scripts\mongocrypt.dll" />
   </ItemGroup>
   <ItemGroup>
