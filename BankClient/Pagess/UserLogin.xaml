@@ -11,7 +11,7 @@
 
     <materialDesign:Card Margin="10,10,10,10" UniformCornerRadius="15" Background="#FF302F2F">
         <StackPanel Margin="10" >
-            <Button x:Name="btn_close" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Click="btn_close_Click" MouseEnter="btn_close_MouseEnter" MouseLeave="btn_close_MouseLeave" Padding="16,4,16,4" Height="35">
+            <Button x:Name="btn_close" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" Click="Btn_close_Click" MouseEnter="Btn_close_MouseEnter" MouseLeave="Btn_close_MouseLeave" Padding="16,4,16,4" Height="35">
                 <Button.Content>
                     <materialDesign:PackIcon x:Name="icon_exit" Kind="Close" HorizontalAlignment="Right" Height="20" Width="20"/>
                 </Button.Content>
@@ -25,7 +25,7 @@
                 </materialDesign:PackIcon.Foreground>
             </materialDesign:PackIcon>
             <TextBlock TextWrapping="Wrap" Text="Virtual Bank" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="WhiteSmoke" FontSize="40" Margin="0,10,0,0" FontWeight="Bold" FontFamily="Yu Gothic UI" />
-            <TextBox x:Name="user_input"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="130" BorderThickness="0,0,0,2" Foreground="White" Margin="0,35,0,0" materialDesign:HintAssist.Hint="Username" BorderBrush="SeaGreen" FontSize="15px" Validation.Error="user_input_Error"/>
+            <TextBox x:Name="user_input"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="130" BorderThickness="0,0,0,2" Foreground="White" Margin="0,35,0,0" materialDesign:HintAssist.Hint="Username" BorderBrush="SeaGreen" FontSize="15px" Validation.Error="User_input_Error"/>
             <PasswordBox x:Name="password_input" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="130" BorderThickness="0,0,0,2" Foreground="White"  Margin="0,20,0,0" materialDesign:HintAssist.Hint="Password" BorderBrush="SeaGreen" RenderTransformOrigin="0.5,0.5" FontSize="15px"/>
             <Button x:Name="btn_login" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="120px" Margin="0,55,0,0" Content="LOGIN" FontSize="14" Height="32" Click="Btn_Login_Click" />
             <Button x:Name="register_btn" Style="{StaticResource MaterialDesignFlatButton}" Width="120px" Content="Register" FontSize="12px" Margin="0,10,0,0" Foreground="#FFD3CFD9" Click="Register_btn_Click"  />

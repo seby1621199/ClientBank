@@ -1,20 +1,10 @@
-﻿using MaterialDesignThemes.Wpf;
-using MongoDB.Driver;
-using System;
+﻿using MongoDB.Driver;
 using System.Collections.Generic;
-using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BankClient.Pagess
 {
@@ -29,13 +19,13 @@ namespace BankClient.Pagess
             InitializeComponent();
         }
 
-        private void btn_transfer_Click(object sender, RoutedEventArgs e)
+        private void Btn_transfer_Click(object sender, RoutedEventArgs e)
         {
             if (Globals.global_user.Balance >= uint.Parse(input_amount.Text))
             {
                 User user_transfer = beneficiary;
-                user_transfer.Balance = user_transfer.Balance + uint.Parse(input_amount.Text);
-                Globals.global_user.Balance = Globals.global_user.Balance - uint.Parse(input_amount.Text);
+                user_transfer.Balance += uint.Parse(input_amount.Text);
+                Globals.global_user.Balance -= uint.Parse(input_amount.Text);
                 Globals.global_user.Update();
                 user_transfer.Update();
                 result_text.Text = "Transfer successful!\nYour new balance is:  " + Globals.global_user.Balance;
@@ -49,11 +39,11 @@ namespace BankClient.Pagess
 
 
 
-        private void input_user_TextChanged(object sender, TextChangedEventArgs e)
+        private void Input_user_TextChanged(object sender, TextChangedEventArgs e)
         {
             //create a search filter for the user collection based on the input text from the user textbox 
             var filter_username = Builders<User>.Filter.Eq("Username", input_user.Text.ToString());
-            var filter_last_name= Builders<User>.Filter.Eq("Last_Name", input_user.Text.ToString());
+            var filter_last_name = Builders<User>.Filter.Eq("Last_Name", input_user.Text.ToString());
             var filter_iban = Builders<User>.Filter.Eq("IBAN", input_user.Text.ToString());
             //create a list of users that match the filter
             List<User> users_username = Globals.m_Collection.Find(filter_username).ToList();
@@ -66,7 +56,7 @@ namespace BankClient.Pagess
             users = users.Concat(users_iban).ToList();
             //remove dublicates of users by username 
             users = users.Distinct().ToList();
- 
+
 
             // List<User> users = users_username.Join(users_lastname);
 
@@ -88,38 +78,42 @@ namespace BankClient.Pagess
                 for (int i = 0; i < users.Count; i++)
                 {
                     users_area.Visibility = Visibility.Visible;
-                    TextBlock to_add = new TextBlock();
-                    to_add.Foreground = new SolidColorBrush(Color.FromRgb(245, 245, 245));
-                    to_add.FontSize = 14;
-                    to_add.VerticalAlignment = VerticalAlignment.Bottom;
-                    to_add.HorizontalAlignment = HorizontalAlignment.Left;
+                    TextBlock to_add = new TextBlock
+                    {
+                        Foreground = new SolidColorBrush(Color.FromRgb(245, 245, 245)),
+                        FontSize = 14,
+                        VerticalAlignment = VerticalAlignment.Bottom,
+                        Padding = new Thickness(0, 10, 0, 10),
+                        HorizontalAlignment = HorizontalAlignment.Left
+
+                    }; //de modificat aici 
                     to_add.MouseLeftButtonDown += To_add_MouseLeftButtonDown;
                     to_add.Tag = users[i];
                     to_add.MouseEnter += To_add_MouseEnter;
                     to_add.MouseLeave += To_add_MouseLeave;
-                    to_add.Text = users[i].Username+" | IBAN: "+users[i].IBAN;
-                    to_add.Margin= new Thickness(10, 0, 10, 0);
+                    to_add.Text = users[i].Username + " | IBAN: " + users[i].IBAN;
+                    to_add.Margin = new Thickness(10, 0, 10, 0);
                     to_add.Padding = new Thickness(0, 10, 0, 10);
                     users_area.Children.Add(to_add);
                 }
             }
-            
+
         }
 
         private void To_add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-          //  throw new NotImplementedException();
+            //  throw new NotImplementedException();
             var t = (TextBlock)sender;
             t.Background = Brushes.DarkGray;
             beneficiary = (User)t.Tag;
-         
-            result_text.Text= "You have selected as beneficiary of the transfer the user: "+ beneficiary.Username;
+
+            result_text.Text = "You have selected as beneficiary of the transfer the user: " + beneficiary.Username;
         }
 
         private void To_add_MouseLeave(object sender, MouseEventArgs e)
         {
-               var a = (TextBlock)sender;
-               a.Opacity = 1;
+            var a = (TextBlock)sender;
+            a.Opacity = 1;
         }
 
         private void To_add_MouseEnter(object sender, MouseEventArgs e)

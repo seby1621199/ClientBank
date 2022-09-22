@@ -5,10 +5,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:BankClient.Pagess.UserLogin.user_input_Error(System.Object,System.Windows.Controls.ValidationErrorEventArgs)")]
-[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:BankClient.Pagess.RegisterUser.button_register_Click(System.Object,System.Windows.RoutedEventArgs)")]
-[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:BankClient.Pagess.RegisterUser.back_button_Click(System.Object,System.Windows.RoutedEventArgs)")]
-[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:BankClient.Login.test_btn_Click(System.Object,System.Windows.RoutedEventArgs)")]
-[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:BankClient.Login.button_finish_register_Click(System.Object,System.Windows.RoutedEventArgs)")]
-[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:BankClient.Pagess.MenuUser.btn_Home_Click(System.Object,System.Windows.RoutedEventArgs)")]
-[assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>", Scope = "member", Target = "~M:BankClient.Pagess.UserLogin.btn_close_Click(System.Object,System.Windows.RoutedEventArgs)")]
+
+//terminat aici
+
+

@@ -1,17 +1,9 @@
 ﻿using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BankClient.Pagess
 {
@@ -23,7 +15,7 @@ namespace BankClient.Pagess
         public UserLogin()
         {
             InitializeComponent();
-           // DB();
+            // DB();
 
         }
         public void DB()
@@ -35,10 +27,10 @@ namespace BankClient.Pagess
 
         private void Register_btn_Click(object sender, RoutedEventArgs e)
         {
-       
-                    RegisterUser registerUser = new RegisterUser();
-                    registerUser.Show();
-           
+
+            RegisterUser registerUser = new RegisterUser();
+            registerUser.Show();
+
         }
 
         private void Btn_Login_Click(object sender, RoutedEventArgs e)
@@ -54,12 +46,12 @@ namespace BankClient.Pagess
 
             var filter = Builders<User>.Filter.Eq("Username", user.Username);
             User search = Globals.m_Collection.Find(filter).FirstOrDefault();
-            if (user_input.Text == "" || password_input.Password == "" )
-            { 
+            if (user_input.Text == "" || password_input.Password == "")
+            {
                 result_text.Text = "Please fill in all the fields.";
 
             }
-        else
+            else
             if (search != null)
 
                 if (search.Password == user.Password)
@@ -67,7 +59,7 @@ namespace BankClient.Pagess
                     result_text.Visibility = Visibility.Visible;
                     result_text.Text = "Login succesful.";
                     Globals.global_user = search;
-                    
+
                     MenuUser menuUser = new MenuUser();
                     menuUser.Show();
                     this.Close();
@@ -87,7 +79,7 @@ namespace BankClient.Pagess
             }
         }
 
-        private void user_input_Error(object sender, ValidationErrorEventArgs e)
+        private void User_input_Error(object sender, ValidationErrorEventArgs e)
         {
             result_text.Visibility = Visibility.Visible;
             result_text.Text = "User dont exist.";
@@ -99,19 +91,19 @@ namespace BankClient.Pagess
             menuUser.Show();
         }
 
-        private void btn_close_Click(object sender, RoutedEventArgs e)
+        private void Btn_close_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
 
         }
 
-        private void btn_close_MouseEnter(object sender, MouseEventArgs e)
+        private void Btn_close_MouseEnter(object sender, MouseEventArgs e)
         {
             icon_exit.Foreground = Brushes.IndianRed;
 
         }
 
-        private void btn_close_MouseLeave(object sender, MouseEventArgs e)
+        private void Btn_close_MouseLeave(object sender, MouseEventArgs e)
         {
             icon_exit.Foreground = new SolidColorBrush(Color.FromRgb(221, 255, 255));
 

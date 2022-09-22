@@ -24,7 +24,7 @@
 
 
             </StackPanel>
-            <Button x:Name="btn_deposit" Content="Deposit" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="115,20,0,0" Click="btn_deposit_Click"/>
+            <Button x:Name="btn_deposit" Content="Deposit" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="115,20,0,0" Click="Btn_deposit_Click"/>
             <TextBlock x:Name="result_text" TextWrapping="Wrap" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="50,15,10,0" Opacity="0.7"/>
         </StackPanel>
     </materialDesign:Card>

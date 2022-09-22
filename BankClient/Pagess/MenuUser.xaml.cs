@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace BankClient.Pagess
 {
@@ -24,14 +14,14 @@ namespace BankClient.Pagess
             InitializeComponent();
         }
 
-        private void btn_Home_Click(object sender, RoutedEventArgs e)
+        private void Btn_Home_Click(object sender, RoutedEventArgs e)
         {
             btn_Home.Background = Brushes.Transparent;
             btn_Transfer.Background = Brushes.Transparent;
             btn_Deposit.Background = Brushes.Transparent;
             btn_Withdraw.Background = Brushes.Transparent;
             Page.Content = null;
-            if(sender==btn_Home)
+            if (sender == btn_Home)
                 Page.Content = new Home();
             if (sender == btn_Deposit)
                 Page.Content = new Deposit();
@@ -44,9 +34,9 @@ namespace BankClient.Pagess
 
             Button button = sender as Button;
             button.Background = new SolidColorBrush(Color.FromRgb(103, 58, 183));
-            
+
         }
-        
-        
+
+
     }
 }
