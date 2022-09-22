@@ -23,6 +23,7 @@ namespace BankClient.Pagess
         public Withdraw()
         {
             InitializeComponent();
+            sold.Text = "Sold: " + Globals.global_user.Balance.ToString();
         }
 
         private void btn_withdraw_Click(object sender, RoutedEventArgs e)
@@ -33,6 +34,7 @@ namespace BankClient.Pagess
                 Globals.global_user.Balance = Globals.global_user.Balance - uint.Parse(input_amount.Text);
                 Globals.global_user.Update();
                 result_text.Text = "Withdraw successful!\nYour new balance is:  " + Globals.global_user.Balance;
+                sold.Text = "Sold: " + Globals.global_user.Balance.ToString();
             }
             else
             {

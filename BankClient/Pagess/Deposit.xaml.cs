@@ -11,6 +11,7 @@ namespace BankClient.Pagess
         public Deposit()
         {
             InitializeComponent();
+            sold.Text = "Sold: " + Globals.global_user.Balance.ToString();
         }
 
 
@@ -21,6 +22,7 @@ namespace BankClient.Pagess
             Globals.global_user.Balance = Globals.global_user.Balance + uint.Parse(input_amount.Text);
             Globals.global_user.Update();
             result_text.Text = "Deposit successful!\nYour new balance is:  " + Globals.global_user.Balance;
+            sold.Text ="Sold: "+ Globals.global_user.Balance.ToString();
 
 
 

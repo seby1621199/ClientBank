@@ -23,7 +23,7 @@ namespace BankClient.Pagess
         public UserLogin()
         {
             InitializeComponent();
-            DB();
+           // DB();
 
         }
         public void DB()

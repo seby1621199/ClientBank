@@ -16,7 +16,8 @@
             </StackPanel>
 
             <StackPanel Margin="30,0,0,0" RenderTransformOrigin="0.468,0.798">
-                <StackPanel Orientation="Horizontal" Margin="0,45,0,0" >
+                <TextBlock x:Name="sold"  Text="Sold:" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+                <StackPanel Orientation="Horizontal" Margin="0,20,0,0" >
                     <TextBlock  Text="Amount:" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Center" VerticalAlignment="Center" Width="73.7966666666667" />
                     <TextBox x:Name="input_amount" BorderThickness="0,0,0,2" Foreground="White"  materialDesign:HintAssist.Hint="" BorderBrush="SeaGreen" FontSize="15px" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"  Padding="7,4,12,4" Width="121.353333333333"/>
                 </StackPanel>
