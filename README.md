@@ -8,7 +8,7 @@
 <li><del>-Login Menu
 <li><del>IBAN
 <li><deL>-User Menu
-<li>-Search for transfers
+<li><del>-Search for transfers
 <li>-Select Silver/Gold/Diamond
 <li><del>-Deposit
 <li><del>-Withdraw
