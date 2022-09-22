@@ -10,8 +10,8 @@
 <li><deL>-User Menu
 <li>-Search for transfers
 <li>-Select Silver/Gold/Diamond
-<li>-Deposit
-<li>-Withdraw
-<li>-Transfer to other user
+<li><del>-Deposit
+<li><del>-Withdraw
+<li><del>-Transfer to other user
 <li>-Multiple currencies
 
