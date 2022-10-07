@@ -1,17 +1,27 @@
-**Bank Client C# and MongoDB**
+## _Bank Client with .NET WPF (C#) & MongoDB_
+## Features
+- LOGIN & REGISTER Windows
+![alt text](https://i.imgur.com/UGAVCJv.png)
+- Menu :
+![Menu](https://i.imgur.com/svP8QTi.png)
+  - Home
+  - Deposit
+  - Withdraw
+  - Transfer | Search for:
+    - Username
+    - IBAN
+    
 
+- Encryption and Decryption of the password with the help of a key
 
-## TO DO:
-
-
-<li><del>-Register Menu
-<li><del>-Login Menu
-<li><del>IBAN
-<li><deL>-User Menu
-<li><del>-Search for transfers
-<li>-Select Silver/Gold/Diamond
-<li><del>-Deposit
-<li><del>-Withdraw
-<li><del>-Transfer to other user
-<li>-Multiple currencies
-
+- Card
+  - Number Id
+  - Exp Date
+  - CVV
+  
+ - MongoDB
+ 
+ 
+ ![MongoDB](https://i.imgur.com/8LuYYRY.png)
+  
+  
