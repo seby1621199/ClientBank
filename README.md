@@ -1,7 +1,7 @@
 ## _Bank Client with .NET WPF (C#) & MongoDB_
 ## Features
 - LOGIN & REGISTER Windows
-![alt text](https://i.imgur.com/UGAVCJv.png)
+![alt text](https://i.imgur.com/cwXkGiK.png)
 - Menu :
 ![Menu](https://i.imgur.com/svP8QTi.png)
   - Home
