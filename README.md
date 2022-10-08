@@ -2,8 +2,8 @@
 ## Features
 - LOGIN & REGISTER Windows
 ![alt text](https://i.imgur.com/cwXkGiK.png)
-- Menu :
 ![Menu](https://i.imgur.com/svP8QTi.png)
+- Menu :
   - Home
   - Deposit
   - Withdraw
