@@ -19,10 +19,7 @@ internal class User
     public string Last_Name { get; set; }
     public string IBAN { get; set; }
    // public Card Card { get; set; }
-
     public Cardul Cardul { get; set; }
-
-    //public Animal Animal { get; set; }
     public User()
     {
     }
