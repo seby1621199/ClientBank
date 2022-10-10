@@ -25,10 +25,12 @@
                 </StackPanel>
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="100,0,0,0">
                     <TextBlock  Text="Card:" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" Margin="20,0,0,0" />
-                    <TextBlock x:Name="card_number"  Text="Number: 911223026"  Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" Margin="20,0,0,0" />
-                    <TextBlock x:Name="card_cvv"  Text="CVV: 617"  Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" Margin="20,0,0,0" />
+                    <TextBlock x:Name="card_type"  Text="Type: Platinum"  Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" Margin="20,0,0,0"/>
+                    <TextBlock x:Name="card_number"  Text="Number: 911223026"  Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" Margin="20,0,0,0" MouseLeftButtonUp="Clipboard_Data" MouseEnter="Info_MouseEnter"  MouseLeave="Info_MouseLeave"/>
+                    <TextBlock x:Name="card_cvv"  Text="CVV: 617"  Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" Margin="20,0,0,0" MouseLeftButtonUp="Clipboard_Data" MouseEnter="Info_MouseEnter"  MouseLeave="Info_MouseLeave" />
 
-                    <TextBlock x:Name="card_expiration"  Text="Expiration: 09/22"  Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" Margin="20,0,0,0" />
+                    <TextBlock x:Name="card_expiration"  Text="Expiration: 09/22"  Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" Margin="20,0,0,0" MouseLeftButtonUp="Clipboard_Data" MouseEnter="Info_MouseEnter"  MouseLeave="Info_MouseLeave" />
+                    <TextBlock   Text="(Click to copy)"  Foreground="#FF938F8F" FontSize="14" FontFamily="Yu Gothic Medium"  HorizontalAlignment="Center" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>

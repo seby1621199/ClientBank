@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:BankClient.Pagess"
         mc:Ignorable="d"
-        Title="UserLogin" Height="510" Width="350" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+        Title="UserLogin" Height="510" Width="350" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="{x:Null}" Loaded="Window_Loaded">
 
 
     <materialDesign:Card Margin="10,10,10,10" UniformCornerRadius="15" Background="#FF302F2F">
@@ -25,12 +25,12 @@
                 </materialDesign:PackIcon.Foreground>
             </materialDesign:PackIcon>
             <TextBlock TextWrapping="Wrap" Text="Virtual Bank" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="WhiteSmoke" FontSize="40" Margin="0,10,0,0" FontWeight="Bold" FontFamily="Yu Gothic UI" />
-            <TextBox x:Name="user_input"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="130" BorderThickness="0,0,0,2" Foreground="White" Margin="0,35,0,0" materialDesign:HintAssist.Hint="Username" BorderBrush="SeaGreen" FontSize="15px" Validation.Error="User_input_Error"/>
+            <TextBox x:Name="user_input"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="130" BorderThickness="0,0,0,2" Foreground="White" Margin="0,40,0,0" materialDesign:HintAssist.Hint="Username" BorderBrush="SeaGreen" FontSize="15px" Validation.Error="User_input_Error"/>
             <PasswordBox x:Name="password_input" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="130" BorderThickness="0,0,0,2" Foreground="White"  Margin="0,20,0,0" materialDesign:HintAssist.Hint="Password" BorderBrush="SeaGreen" RenderTransformOrigin="0.5,0.5" FontSize="15px"/>
-            <Button x:Name="btn_login" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="120px" Margin="0,55,0,0" Content="LOGIN" FontSize="14" Height="32" Click="Btn_Login_Click" />
+            <Button x:Name="btn_login" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="120px" Margin="0,65,0,0" Content="LOGIN" FontSize="14" Height="32" Click="Btn_Login_Click" />
             <Button x:Name="register_btn" Style="{StaticResource MaterialDesignFlatButton}" Width="120px" Content="Register" FontSize="12px" Margin="0,10,0,0" Foreground="#FFD3CFD9" Click="Register_btn_Click"  />
-            <TextBlock x:Name="result_text" TextWrapping="Wrap" Foreground="WhiteSmoke" HorizontalAlignment="Center" Margin="10,15,10,0" Opacity="0.7"/>
-            <Button Content="Button" Click="Button_Click" Margin="0,30,0,0"/>
+            <TextBlock x:Name="result_text" TextWrapping="Wrap" Foreground="WhiteSmoke" HorizontalAlignment="Center" Margin="10,10,10,0" Opacity="0.7"/>
+            <Button Content="Button" Click="Button_Click" Margin="0,35,0,0"/>
 
         </StackPanel>
 

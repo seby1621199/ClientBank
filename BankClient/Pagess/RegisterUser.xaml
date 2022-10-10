@@ -30,8 +30,24 @@
                 <TextBox x:Name="input_lastName"  Width="130" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="Last Name" BorderBrush="SeaGreen" FontSize="15px" Padding="4,4,4,4" Margin="7,0,10,0"/>
             </StackPanel>
             <TextBox x:Name="input_country"  Width="270" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="Country" BorderBrush="SeaGreen" FontSize="15px" Padding="4,4,4,4" HorizontalAlignment="Center" Margin="0,18,0,0"/>
-            <Button x:Name="button_register" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="120px" Content="REGISTER" FontSize="14" Height="32"  Margin="0,60,0,0" Click="Button_register_Click"/>
-            <TextBlock x:Name="result_text" TextWrapping="Wrap" Foreground="WhiteSmoke" HorizontalAlignment="Center" Margin="10,15,10,0" Opacity="0.7"/>
+
+            <ComboBox x:Name="Card_Select" Margin="20,18,5,5" Style="{StaticResource MaterialDesignComboBox}" VerticalAlignment="Stretch" Background="{x:Null}" Foreground="#FFC9C0C0" FontFamily="Yu Gothic" FontWeight="Bold" DropDownOpened="Card_Select_DropDownOpened" DropDownClosed="Card_Select_DropDownClosed" materialDesign:HintAssist.Hint="Select your type of card" materialDesign:ThemeAssist.Theme="Dark">
+
+                <ComboBoxItem Content="Classic"  FontFamily="Yu Gothic Medium" />
+                <ComboBoxItem Content="Silver" FontFamily="Yu Gothic Medium" />
+                <ComboBoxItem Content="Gold" FontFamily="Yu Gothic Medium" />
+                <ComboBoxItem Content="Platinum" FontFamily="Yu Gothic Medium" />
+
+                <!-- Here's a valid comment. Notice it's outside the <UserControl> tag's braces 
+                <RadioButton Style="{StaticResource MaterialDesignAccentRadioButton}" Content="Classic" Foreground="#FFDDDADA"  FontSize="16" Margin="0,0,0,5"/>
+                <RadioButton Style="{StaticResource MaterialDesignAccentRadioButton}" Content="Silver" Foreground="#FFDDDADA"  FontSize="16" Margin="0,0,0,5"/>
+                <RadioButton Style="{StaticResource MaterialDesignAccentRadioButton}" Content="Gold" Foreground="#FFDDDADA"  FontSize="16" Margin="0,0,0,5"/>
+                <RadioButton Style="{StaticResource MaterialDesignAccentRadioButton}" Content="Platinium" Foreground="#FFDDDADA"  FontSize="16" Margin="0,0,0,5"/>
+                -->
+            </ComboBox>
+            <TextBlock x:Name="result_text" TextWrapping="Wrap" Foreground="WhiteSmoke" HorizontalAlignment="Center" Margin="10,10,10,0" Opacity="0.7"/>
+            <Button x:Name="button_register" Style="{StaticResource MaterialDesignFlatDarkBgButton}" Width="120px" Content="REGISTER" FontSize="14" Height="32"  Margin="0,20,0,0" Click="Button_register_Click"/>
+            
         </StackPanel>
 
     </materialDesign:Card>

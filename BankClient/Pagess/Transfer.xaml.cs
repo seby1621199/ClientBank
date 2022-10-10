@@ -23,16 +23,12 @@ namespace BankClient.Pagess
         {
             if (Globals.global_user.Balance >= uint.Parse(input_amount.Text))
             {
-                User user_transfer = beneficiary;
-                user_transfer.Balance += uint.Parse(input_amount.Text);
-                Globals.global_user.Balance -= uint.Parse(input_amount.Text);
-                Globals.global_user.Update();
-                user_transfer.Update();
-                result_text.Text = "Transfer successful!\nYour new balance is:  " + Globals.global_user.Balance;
+                Globals.global_user.Transfer(beneficiary, uint.Parse(input_amount.Text));
+                result_text.Text = "Transfer successful! Your new balance is:  " + Globals.global_user.Balance;
             }
             else
             {
-                result_text.Text = "Transfer failed!\nYour balance is:  " + Globals.global_user.Balance;
+                result_text.Text = "Transfer failed! Your balance is:  " + Globals.global_user.Balance;
             }
         }
 
@@ -41,24 +37,17 @@ namespace BankClient.Pagess
 
         private void Input_user_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //create a search filter for the user collection based on the input text from the user textbox 
             var filter_username = Builders<User>.Filter.Eq("Username", input_user.Text.ToString());
-            var filter_last_name = Builders<User>.Filter.Eq("Last_Name", input_user.Text.ToString());
+            //var filter_last_name = Builders<User>.Filter.Eq("Last_Name", input_user.Text.ToString());
             var filter_iban = Builders<User>.Filter.Eq("IBAN", input_user.Text.ToString());
-            //create a list of users that match the filter
             List<User> users_username = Globals.m_Collection.Find(filter_username).ToList();
-            List<User> users_lastname = Globals.m_Collection.Find(filter_last_name).ToList();
+           // List<User> users_lastname = Globals.m_Collection.Find(filter_last_name).ToList();
             List<User> users_iban = Globals.m_Collection.Find(filter_iban).ToList();
             List<User> users;
-            //if the list is empty, the user does not exist
-            //concatenate users_username and users_lastname in users
-            users = users_username.Concat(users_lastname).ToList();
+            users = users_username;
+            //users = users_username.Concat(users_lastname).ToList();
             users = users.Concat(users_iban).ToList();
-            //remove dublicates of users by username 
             users = users.Distinct().ToList();
-
-
-            // List<User> users = users_username.Join(users_lastname);
 
 
             TextBlock new_users = new TextBlock();
@@ -102,7 +91,6 @@ namespace BankClient.Pagess
 
         private void To_add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //  throw new NotImplementedException();
             var t = (TextBlock)sender;
             t.Background = Brushes.DarkGray;
             beneficiary = (User)t.Tag;

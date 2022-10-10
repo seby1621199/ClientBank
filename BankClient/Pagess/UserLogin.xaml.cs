@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using BankClient.Classes;
+using MongoDB.Driver;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -42,16 +43,16 @@ namespace BankClient.Pagess
                 Balance = 0,
                 Password = Encryption.Encrypt(password_input.Password.ToString())
             };
-            ;
+            
 
             var filter = Builders<User>.Filter.Eq("Username", user.Username);
             User search = Globals.m_Collection.Find(filter).FirstOrDefault();
             if (user_input.Text == "" || password_input.Password == "")
             {
                 result_text.Text = "Please fill in all the fields.";
-
             }
             else
+
             if (search != null)
 
                 if (search.Password == user.Password)
@@ -59,6 +60,7 @@ namespace BankClient.Pagess
                     result_text.Visibility = Visibility.Visible;
                     result_text.Text = "Login succesful.";
                     Globals.global_user = search;
+                    //Globals.global_user.Cardul = new Gold();
 
                     MenuUser menuUser = new MenuUser();
                     menuUser.Show();
@@ -106,6 +108,12 @@ namespace BankClient.Pagess
         private void Btn_close_MouseLeave(object sender, MouseEventArgs e)
         {
             icon_exit.Foreground = new SolidColorBrush(Color.FromRgb(221, 255, 255));
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DB();
 
         }
     }

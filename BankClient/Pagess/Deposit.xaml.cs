@@ -19,8 +19,9 @@ namespace BankClient.Pagess
         {
 
 
-            Globals.global_user.Balance += uint.Parse(input_amount.Text);
-            Globals.global_user.Update();
+          //  Globals.global_user.Balance += uint.Parse(input_amount.Text);
+            //Globals.global_user.Update();
+            Globals.global_user.Deposit(uint.Parse(input_amount.Text));
             result_text.Text = "Deposit successful!\nYour new balance is:  " + Globals.global_user.Balance;
             sold.Text = "Sold: " + Globals.global_user.Balance.ToString();
 

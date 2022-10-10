@@ -20,8 +20,9 @@ namespace BankClient.Pagess
             result_text.Foreground = new SolidColorBrush(Color.FromRgb(245, 245, 245));
             if (Globals.global_user.Balance >= uint.Parse(input_amount.Text))
             {
-                Globals.global_user.Balance -= uint.Parse(input_amount.Text);
-                Globals.global_user.Update();
+                //Globals.global_user.Balance -= uint.Parse(input_amount.Text);
+                //Globals.global_user.Update();
+                Globals.global_user.WithDraw(uint.Parse(input_amount.Text));
                 result_text.Text = "Withdraw successful!\nYour new balance is:  " + Globals.global_user.Balance;
                 sold.Text = "Sold: " + Globals.global_user.Balance.ToString();
             }

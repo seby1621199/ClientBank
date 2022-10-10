@@ -18,7 +18,11 @@ internal class User
     public string First_Name { get; set; }
     public string Last_Name { get; set; }
     public string IBAN { get; set; }
-    public Card Card { get; set; }
+   // public Card Card { get; set; }
+
+    public Cardul Cardul { get; set; }
+
+    //public Animal Animal { get; set; }
     public User()
     {
     }
@@ -34,6 +38,7 @@ internal class User
         this.IBAN = user.IBAN;
         this.First_Name = user.First_Name;
         this.Last_Name = user.Last_Name;
+        this.Cardul = user.Cardul;
 
 
 
@@ -59,7 +64,6 @@ internal class User
     //        this.Update();
     //        user2.Update();
     //    }
-
     //}
 
     public void Load_DB()
