@@ -58,9 +58,6 @@
     <Reference Include="DnsClient, Version=1.6.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <HintPath>..\packages\DnsClient.1.6.0\lib\net471\DnsClient.dll</HintPath>
     </Reference>
-    <Reference Include="Guna.UI2, Version=2.0.3.2, Culture=neutral, PublicKeyToken=4015e4865bda28a4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Guna.UI2.WinForms.2.0.3.2\lib\net40\Guna.UI2.dll</HintPath>
-    </Reference>
     <Reference Include="JetBrains.Annotations, Version=4242.42.42.42, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.2022.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
@@ -176,6 +173,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Account.cs" />
     <Compile Include="Classes\Cardul.cs" />
     <Compile Include="Classes\Card.cs" />
     <Compile Include="GlobalSuppressions.cs" />

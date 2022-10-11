@@ -45,8 +45,9 @@ namespace BankClient.Pagess
             };
             
 
-            var filter = Builders<User>.Filter.Eq("Username", user.Username);
-            User search = Globals.m_Collection.Find(filter).FirstOrDefault();
+            //var filter = Builders<User>.Filter.Eq("Username", user.Username);
+            //User search = Globals.m_Collection.Find(filter).FirstOrDefault();
+            User search = Globals.m_Collection.Find(x => x.Username == user.Username).FirstOrDefault();
             if (user_input.Text == "" || password_input.Password == "")
             {
                 result_text.Text = "Please fill in all the fields.";

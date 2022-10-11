@@ -26,8 +26,7 @@ internal class User
 
     public User(string name)
     {
-        var filter = Builders<User>.Filter.Eq("Username", name);
-        User user = Globals.m_Collection.Find(filter).FirstOrDefault();
+        User user = Globals.m_Collection.Find(x => x.Username == name).FirstOrDefault();
         this.Username = user.Username;
         this.Password = user.Password;
         this.Balance = user.Balance;
@@ -36,10 +35,6 @@ internal class User
         this.First_Name = user.First_Name;
         this.Last_Name = user.Last_Name;
         this.Cardul = user.Cardul;
-
-
-
-
     }
     //public void Transfer(User user2, uint money_transfer)
     //{
@@ -72,12 +67,9 @@ internal class User
 
     public void Update()
     {
-
-        var filter = Builders<User>.Filter.Eq("Username", this.Username);
-        //var update = Builders<User>.Update.Set("Balance", this.Balance)
-        var update = Builders<User>.Update.Set("Balance", this.Balance).Set("First_Name", this.First_Name).Set("Last_Name", this.Last_Name).Set("IBAN", this.IBAN).Set("Password", this.Password).Set("Country", this.Country);
-        Globals.m_Collection.UpdateOne(filter, update);
+        Globals.m_Collection.ReplaceOne(x => x.Username ==Username , this);
     }
+
 
     public void Deposit(uint money_deposit)
     {
