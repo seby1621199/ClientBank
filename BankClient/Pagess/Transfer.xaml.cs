@@ -13,22 +13,35 @@ namespace BankClient.Pagess
     /// </summary>
     public partial class Transfer : UserControl
     {
+        int nr_cont_from = -1;
         User beneficiary = new User();
+        string beneficiary_account = "";
         public Transfer()
         {
             InitializeComponent();
+            LoadAccounts();
+        }
+
+        private void LoadAccounts()
+        {
+            {
+                foreach (var account in Globals.global_user.Accounts)
+                {
+                    this.Account_Select.Items.Add(account.IBAN);
+                }
+            }
         }
 
         private void Btn_transfer_Click(object sender, RoutedEventArgs e)
         {
-            if (Globals.global_user.Balance >= uint.Parse(input_amount.Text))
+            if (Globals.global_user.Accounts[nr_cont_from].Balance >= uint.Parse(input_amount.Text))
             {
-                Globals.global_user.Transfer(beneficiary, uint.Parse(input_amount.Text));
-                result_text.Text = "Transfer successful! Your new balance is:  " + Globals.global_user.Balance;
+                Globals.global_user.Transfer(nr_cont_from,beneficiary_account, uint.Parse(input_amount.Text));
+                result_text.Text = "Transfer successful! Your new balance is:  " + Globals.global_user.Accounts[nr_cont_from].Balance;
             }
             else
             {
-                result_text.Text = "Transfer failed! Your balance is:  " + Globals.global_user.Balance;
+                result_text.Text = "Transfer failed! Your balance is:  " + Globals.global_user.Accounts[nr_cont_from].Balance;
             }
         }
 
@@ -38,17 +51,15 @@ namespace BankClient.Pagess
         private void Input_user_TextChanged(object sender, TextChangedEventArgs e)
         {
             var filter_username = Builders<User>.Filter.Eq("Username", input_user.Text.ToString());
-            //var filter_last_name = Builders<User>.Filter.Eq("Last_Name", input_user.Text.ToString());
-            var filter_iban = Builders<User>.Filter.Eq("IBAN", input_user.Text.ToString());
+           
+            var filter_iban = Builders<User>.Filter.ElemMatch(x => x.Accounts, x => x.IBAN == input_user.Text.ToString());
             List<User> users_username = Globals.m_Collection.Find(filter_username).ToList();
-           // List<User> users_lastname = Globals.m_Collection.Find(filter_last_name).ToList();
+        
             List<User> users_iban = Globals.m_Collection.Find(filter_iban).ToList();
             List<User> users;
             users = users_username;
-            //users = users_username.Concat(users_lastname).ToList();
             users = users.Concat(users_iban).ToList();
             users = users.Distinct().ToList();
-
 
             TextBlock new_users = new TextBlock();
 
@@ -74,13 +85,24 @@ namespace BankClient.Pagess
                         VerticalAlignment = VerticalAlignment.Bottom,
                         Padding = new Thickness(0, 10, 0, 10),
                         HorizontalAlignment = HorizontalAlignment.Left
-
+                        
                     }; //de modificat aici 
                     to_add.MouseLeftButtonDown += To_add_MouseLeftButtonDown;
-                    to_add.Tag = users[i];
                     to_add.MouseEnter += To_add_MouseEnter;
                     to_add.MouseLeave += To_add_MouseLeave;
-                    to_add.Text = users[i].Username + " | IBAN: " + users[i].IBAN;
+                    //check if input_user is user ok account
+                    if (users[i].Accounts.Any(x => x.IBAN == input_user.Text.ToString()))
+                    {
+                        to_add.Text = users[i].Username + " - " + input_user.Text.ToString();
+                        to_add.Tag = input_user.Text.ToString();
+                    }
+                    else
+                    {
+                        to_add.Text = users[i].Username;
+                        to_add.Tag = users[i].Accounts[0].IBAN;
+                    }
+
+                    //to_add.Text = users[i].Username;
                     to_add.Margin = new Thickness(10, 0, 10, 0);
                     to_add.Padding = new Thickness(0, 10, 0, 10);
                     users_area.Children.Add(to_add);
@@ -93,9 +115,9 @@ namespace BankClient.Pagess
         {
             var t = (TextBlock)sender;
             t.Background = Brushes.DarkGray;
-            beneficiary = (User)t.Tag;
+            beneficiary_account = (string)t.Tag;
 
-            result_text.Text = "You have selected as beneficiary of the transfer the user: " + beneficiary.Username;
+            result_text.Text = "You have selected as beneficiary of the transfer account: " + beneficiary_account;
         }
 
         private void To_add_MouseLeave(object sender, MouseEventArgs e)
@@ -108,6 +130,19 @@ namespace BankClient.Pagess
         {
             var a = (TextBlock)sender;
             a.Opacity = 0.6;
+        }
+
+        private void Account_Select_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+             nr_cont_from = -1;
+            for (int i = 0; i < Globals.global_user.Accounts.Count; i++)
+            {
+                if (Globals.global_user.Accounts[i].IBAN == (string)Account_Select.SelectedValue)
+                {
+                    nr_cont_from = i;
+                }
+
+            }
         }
     }
 }

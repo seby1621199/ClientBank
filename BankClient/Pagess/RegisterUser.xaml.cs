@@ -74,10 +74,14 @@ namespace BankClient.Pagess
                     ////user.Card = card;
 
 
-                    user.IBAN = user.Country[0].ToString() + user.Country[1].ToString() + rnd.Next(10, 99) + "BNK" + user.First_Name[0].ToString() + user.Last_Name[0].ToString() + rnd.Next(10000000, 99999999);
+                    user.IBAN = "RON"+"897"+ rnd.Next(10, 99) + "BNK" + user.First_Name[0].ToString() + user.Last_Name[0].ToString() + rnd.Next(10000000, 99999999);
                     user.IBAN = user.IBAN.ToUpper();
+                    Account Account = new Account("RON", 0, user.IBAN);
+                    user.Accounts.Add(Account);
                     Globals.m_Collection.InsertOne(user);
                     Globals.global_user = user;
+                    
+                    
                     this.Close();
                 }
             }

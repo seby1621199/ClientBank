@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using BankClient;
 using BankClient.Classes;
 using MongoDB.Bson.Serialization.Attributes;
@@ -20,6 +21,7 @@ internal class User
     public string IBAN { get; set; }
    // public Card Card { get; set; }
     public Cardul Cardul { get; set; }
+    public List<Account> Accounts { get; set; } = new List<Account>();
     public User()
     {
     }
@@ -35,7 +37,9 @@ internal class User
         this.First_Name = user.First_Name;
         this.Last_Name = user.Last_Name;
         this.Cardul = user.Cardul;
+        
     }
+    
     //public void Transfer(User user2, uint money_transfer)
     //{
 
@@ -69,24 +73,58 @@ internal class User
     {
         Globals.m_Collection.ReplaceOne(x => x.Username ==Username , this);
     }
+    
+    
+    public int Deposit(uint money_deposit,string iban)
+    {
+        int nr = -1;
+        for (int i = 0; i < Accounts.Count; i++)
+        {
+            if (Accounts[i].IBAN == iban)
+            {
+                Accounts[i].Balance += money_deposit;
+                this.Update();
+                nr = i;
+            }
+        }
+        return nr;
 
+        //this.Balance += money_deposit;
+        // this.Update();
+    }
+    public int WithDraw(uint money_withdraw, string iban)
+    {
+        int nr = -1;
+        for (int i = 0; i < Accounts.Count; i++)
+        {
+            if (Accounts[i].IBAN == iban)
+            {
+                Accounts[i].Balance -= money_withdraw;
+                this.Update();
+                nr = i;
+            }
+        }
+        return nr;
 
-    public void Deposit(uint money_deposit)
-    {
-        this.Balance += money_deposit;
-        this.Update();
+       // this.Balance -= money_withdraw;
+        //this.Update();
     }
-    public void WithDraw(uint money_withdraw)
+    public Account Transfer(int account_number,string user2_iban, uint money_transfer)
     {
-        this.Balance -= money_withdraw;
-        this.Update();
-    }
-    public void Transfer(User user2, uint money_transfer)
-    {
-        this.Balance -= money_transfer;
-        user2.Balance += money_transfer;
+        //find account 2
+        var filter = Builders<User>.Filter.ElemMatch(x => x.Accounts, x => x.IBAN == user2_iban);
+        User user2 = Globals.m_Collection.Find(filter).FirstOrDefault();
+        
+        this.Accounts[account_number].Balance -= money_transfer;
+        int nr = user2.GetAccountNumber(user2_iban);
+        user2.Accounts[nr].Balance += money_transfer;
+        //account2.Balance += money_transfer;
         this.Update();
         user2.Update();
+        Globals.convert("EUR", "RON", 5);
+        return user2.Accounts[nr];
+
+
     }
 
     public void Delete()
@@ -95,6 +133,25 @@ internal class User
         Globals.m_Collection.DeleteOne(filter);
     }
 
+    public void AddAccount(Account account)
+    {
+        this.Accounts.Add(account);
+        this.Update();
+    }
+
+    //get account number by iban
+    public int GetAccountNumber(string iban)
+    {
+        int nr = -1;
+        for (int i = 0; i < Accounts.Count; i++)
+        {
+            if (Accounts[i].IBAN == iban)
+            {
+                nr = i;
+            }
+        }
+        return nr;
+    }
 
 }
 

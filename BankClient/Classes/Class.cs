@@ -1,4 +1,9 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson.IO;
+using MongoDB.Driver;
+using System.Net.Http;
+using System;
+using Newtonsoft.Json;
+
 
 namespace BankClient
 {
@@ -9,5 +14,33 @@ namespace BankClient
         public static MongoDB.Driver.IMongoCollection<User> m_Collection = Globals.m_Database.GetCollection<User>("users");
         public static User global_user;
         public static string text = "nu s-a schimbat";
+        public int x = 0;
+        public static async void convert(string currency_from, string currency_to, int amm)
+        {
+
+            int amount = 5;
+            string from = "EUR";
+            string to = "RON";
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://currency-converter18.p.rapidapi.com/api/v1/convert?from=" + from + "&to=" + to + "&amount=" + amount),
+                Headers =
+    {
+        { "X-RapidAPI-Key", "4de4a2bedfmsh108fc0b822bf003p1205c3jsn0bc305269f2b" },
+        { "X-RapidAPI-Host", "currency-converter18.p.rapidapi.com" },
+    },
+            };
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                dynamic tmp = Newtonsoft.Json.JsonConvert.DeserializeObject(body);
+                string result = (string)tmp.result.convertedAmount;
+                Console.WriteLine(body);
+                Console.WriteLine(result);
+            }
+        }
     }
 }

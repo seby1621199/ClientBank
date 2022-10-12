@@ -12,6 +12,7 @@ namespace BankClient.Classes
         public string Expiration { get; set; }
         public double Tax { get; set; }
     }
+    //TODO: De modificat taxa
 
     class Silver : Cardul
     {
@@ -58,6 +59,8 @@ namespace BankClient.Classes
             Expiration = DateTime.Now.AddYears(5).ToString("MM/yy");
             Tax = 0.3;
         }
+
+
     }
 
 }

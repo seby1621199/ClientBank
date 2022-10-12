@@ -8,12 +8,12 @@ namespace BankClient.Classes
 {
     internal class Account
     {
-        public string Curreny { get; set; }
+        public string Currency { get; set; }
         public uint Balance { get; set; }
         public string IBAN { get; set; }
         public Account(string currency, uint balance, string iban)
         {
-            Curreny = currency;
+            Currency = currency;
             Balance = balance;
             IBAN = iban;
         }
