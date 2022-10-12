@@ -3,7 +3,7 @@ using MongoDB.Driver;
 using System.Net.Http;
 using System;
 using Newtonsoft.Json;
-
+using System.Threading.Tasks;
 
 namespace BankClient
 {
@@ -15,12 +15,12 @@ namespace BankClient
         public static User global_user;
         public static string text = "nu s-a schimbat";
         public int x = 0;
-        public static async void convert(string currency_from, string currency_to, int amm)
+        public static async  Task<int> convert(string from, string to, int amount)
         {
-
-            int amount = 5;
-            string from = "EUR";
-            string to = "RON";
+            int result = 100;
+            //int amount = 5;
+            //string from = "EUR";
+            //string to = "RON";
             var client = new HttpClient();
             var request = new HttpRequestMessage
             {
@@ -37,10 +37,12 @@ namespace BankClient
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
                 dynamic tmp = Newtonsoft.Json.JsonConvert.DeserializeObject(body);
-                string result = (string)tmp.result.convertedAmount;
-                Console.WriteLine(body);
-                Console.WriteLine(result);
+                 result = (int)tmp.result.convertedAmount;
+                //Console.WriteLine(body);
+                //Console.WriteLine(result);
             }
+           // int result_int= int.Parse(result);
+            return result;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BankClient;
 using BankClient.Classes;
 using MongoDB.Bson.Serialization.Attributes;
@@ -109,19 +110,27 @@ internal class User
        // this.Balance -= money_withdraw;
         //this.Update();
     }
-    public Account Transfer(int account_number,string user2_iban, uint money_transfer)
+    public async Task<Account> TransferAsync(int account_number,string user2_iban, uint money_transfer)
     {
         //find account 2
         var filter = Builders<User>.Filter.ElemMatch(x => x.Accounts, x => x.IBAN == user2_iban);
         User user2 = Globals.m_Collection.Find(filter).FirstOrDefault();
-        
-        this.Accounts[account_number].Balance -= money_transfer;
         int nr = user2.GetAccountNumber(user2_iban);
-        user2.Accounts[nr].Balance += money_transfer;
-        //account2.Balance += money_transfer;
+        if (this.Accounts[account_number].Currency == user2.Accounts[nr].Currency)
+        {
+            this.Accounts[account_number].Balance -= money_transfer;
+            user2.Accounts[nr].Balance += money_transfer;
+        }
+        else
+        {
+            int converted =  await Globals.convert(this.Accounts[account_number].Currency, user2.Accounts[nr].Currency, (int)money_transfer);
+            //int converted_amount = Convert.ToInt32(converted);
+            this.Accounts[account_number].Balance -= money_transfer;
+            user2.Accounts[nr].Balance += (uint)converted;
+        }
         this.Update();
         user2.Update();
-        Globals.convert("EUR", "RON", 5);
+        //TODO: CONVERT
         return user2.Accounts[nr];
 
 

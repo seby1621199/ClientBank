@@ -36,7 +36,7 @@ namespace BankClient.Pagess
         {
             if (Globals.global_user.Accounts[nr_cont_from].Balance >= uint.Parse(input_amount.Text))
             {
-                Globals.global_user.Transfer(nr_cont_from,beneficiary_account, uint.Parse(input_amount.Text));
+                Globals.global_user.TransferAsync(nr_cont_from,beneficiary_account, uint.Parse(input_amount.Text));
                 result_text.Text = "Transfer successful! Your new balance is:  " + Globals.global_user.Accounts[nr_cont_from].Balance;
             }
             else
