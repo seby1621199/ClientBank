@@ -1,4 +1,5 @@
 ﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -19,6 +20,8 @@ namespace BankClient.Pagess
         public Transfer()
         {
             InitializeComponent();
+            curs_valuar.Visibility = Visibility.Hidden;
+            curs_text.Visibility = Visibility.Hidden;
             LoadAccounts();
         }
 
@@ -34,14 +37,14 @@ namespace BankClient.Pagess
 
         private void Btn_transfer_Click(object sender, RoutedEventArgs e)
         {
-            if (Globals.global_user.Accounts[nr_cont_from].Balance >= uint.Parse(input_amount.Text))
+            if (Globals.global_user.Accounts[nr_cont_from].Balance >= Convert.ToDouble(input_amount.Text))
             {
-                Globals.global_user.TransferAsync(nr_cont_from,beneficiary_account, uint.Parse(input_amount.Text));
-                result_text.Text = "Transfer successful! Your new balance is:  " + Globals.global_user.Accounts[nr_cont_from].Balance;
+                _ = Globals.global_user.TransferAsync(nr_cont_from, beneficiary_account, Convert.ToDouble(input_amount.Text));
+                result_text.Text = "Transfer successful! Your new balance is:  " + Math.Round(Globals.global_user.Accounts[nr_cont_from].Balance, 2);
             }
             else
             {
-                result_text.Text = "Transfer failed! Your balance is:  " + Globals.global_user.Accounts[nr_cont_from].Balance;
+                result_text.Text = "Transfer failed! Your balance is:  " + Math.Round(Globals.global_user.Accounts[nr_cont_from].Balance, 2);
             }
         }
 
@@ -51,10 +54,10 @@ namespace BankClient.Pagess
         private void Input_user_TextChanged(object sender, TextChangedEventArgs e)
         {
             var filter_username = Builders<User>.Filter.Eq("Username", input_user.Text.ToString());
-           
+
             var filter_iban = Builders<User>.Filter.ElemMatch(x => x.Accounts, x => x.IBAN == input_user.Text.ToString());
             List<User> users_username = Globals.m_Collection.Find(filter_username).ToList();
-        
+
             List<User> users_iban = Globals.m_Collection.Find(filter_iban).ToList();
             List<User> users;
             users = users_username;
@@ -85,7 +88,7 @@ namespace BankClient.Pagess
                         VerticalAlignment = VerticalAlignment.Bottom,
                         Padding = new Thickness(0, 10, 0, 10),
                         HorizontalAlignment = HorizontalAlignment.Left
-                        
+
                     }; //de modificat aici 
                     to_add.MouseLeftButtonDown += To_add_MouseLeftButtonDown;
                     to_add.MouseEnter += To_add_MouseEnter;
@@ -104,7 +107,8 @@ namespace BankClient.Pagess
 
                     //to_add.Text = users[i].Username;
                     to_add.Margin = new Thickness(10, 0, 10, 0);
-                    to_add.Padding = new Thickness(0, 10, 0, 10);
+                    to_add.Padding = new Thickness(10, 6, 10, 6);
+                    to_add.Height = Double.NaN;
                     users_area.Children.Add(to_add);
                 }
             }
@@ -114,10 +118,20 @@ namespace BankClient.Pagess
         private void To_add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var t = (TextBlock)sender;
-            t.Background = Brushes.DarkGray;
+            t.Background = btn_transfer.Background;
+            t.Foreground = Brushes.White;
+            //t.FontWeight = FontWeights.Bold;
+            
+            //t.Width = Double.NaN;
+            //t.Padding = new Thickness(10, 0, 10, 0);
             beneficiary_account = (string)t.Tag;
 
             result_text.Text = "You have selected as beneficiary of the transfer account: " + beneficiary_account;
+            if ((string)Account_Select.SelectedValue != "")
+            {
+                Update_Curs(Globals.global_user.Accounts[nr_cont_from].Currency, beneficiary_account.Substring(0, 3));
+            }
+
         }
 
         private void To_add_MouseLeave(object sender, MouseEventArgs e)
@@ -134,7 +148,7 @@ namespace BankClient.Pagess
 
         private void Account_Select_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-             nr_cont_from = -1;
+            nr_cont_from = -1;
             for (int i = 0; i < Globals.global_user.Accounts.Count; i++)
             {
                 if (Globals.global_user.Accounts[i].IBAN == (string)Account_Select.SelectedValue)
@@ -143,6 +157,37 @@ namespace BankClient.Pagess
                 }
 
             }
+            if (beneficiary_account != "")
+            {
+                Update_Curs(Globals.global_user.Accounts[nr_cont_from].Currency, beneficiary_account.Substring(0, 3));
+
+
+            }
+
+
+
+
+
+
+        }
+        private async void Update_Curs(string from, string to)
+        {
+            if (from == to)
+            {
+                curs_valuar.Visibility = Visibility.Hidden;
+                curs_text.Visibility = Visibility.Hidden;
+
+            }
+            else
+            {
+                curs_valuar.Visibility = Visibility.Visible;
+                curs_text.Visibility = Visibility.Visible;
+                double curs = await Globals.Convert(from, to, 1);
+                curs = Math.Round(curs, 2);
+                curs_valuar.Text = "1 " + from + "=" + curs.ToString() + " " + to;
+                //curs_valuar.Text = await Globals.Convert(from, to, 1).ToString();
+            }
+
         }
     }
 }

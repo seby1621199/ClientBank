@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="BankClient.Pagess.SelectAccount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BankClient.Pagess"
+             mc:Ignorable="d" 
+                           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignHeight="386" d:DesignWidth="540">
+
+    <materialDesign:Card Margin="10,10,10,10" UniformCornerRadius="15" Background="#FF302F2F">
+        <StackPanel Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="AccountAdd" Width="50" Height="50" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,5,0"/>
+                <TextBlock Text="Create Account" TextAlignment="Center" Foreground="WhiteSmoke" FontSize="40" FontWeight="Bold" FontFamily="Yu Gothic UI" Margin="0,10,0,0" />
+            </StackPanel>
+
+            <StackPanel Margin="30,20,0,0" RenderTransformOrigin="0.468,0.798">
+                <!-- select currency-->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Select Currency:" Foreground="WhiteSmoke" FontSize="20" FontWeight="Bold" FontFamily="Yu Gothic UI" Margin="0,0,0,0" />
+                    <ComboBox x:Name="Select_Currency" Width="150" Height="30" Margin="20,0,0,0" materialDesign:ThemeAssist.Theme="Dark" Foreground="WhiteSmoke" VerticalAlignment="Stretch" Padding="0,4,0,2" FontSize="14" SelectionChanged="Select_Currency_SelectionChanged">
+                    <ComboBoxItem Content="USD" />
+                    <ComboBoxItem Content="EUR" />
+                    <ComboBoxItem Content="GBP" />
+                 </ComboBox>
+                </StackPanel>
+            </StackPanel>
+            <Button x:Name="btn_Create" Content="Create" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="115,20,0,0"  Click="Btn_Create_Click"/>
+            <TextBlock x:Name="result_text" TextWrapping="Wrap" Foreground="WhiteSmoke" HorizontalAlignment="Left" Margin="50,15,10,0" Opacity="0.7"/>
+            <StackPanel x:Name="info_account" Height="150" Margin="30,0,30,0" Visibility="Collapsed" >
+                <TextBlock Text="Account:" Foreground="WhiteSmoke" FontSize="20" FontWeight="Bold" FontFamily="Yu Gothic UI" />
+                <TextBlock x:Name="user_name"  Text="" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Left" Margin="20,10,0,0" />
+                <TextBlock x:Name="account_currency"  Text="Currency:" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Left" Margin="20,0,0,0" />
+                <TextBlock x:Name="user_iban"  Text="IBAN:" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Left" Margin="20,0,0,0" />
+            </StackPanel>
+            
+        </StackPanel>
+    </materialDesign:Card>
+
+</UserControl>

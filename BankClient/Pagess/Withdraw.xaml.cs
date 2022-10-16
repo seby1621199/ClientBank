@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -37,9 +38,9 @@ namespace BankClient.Pagess
                 {
                     nr = i;
                 }
-
+                
             }
-            sold.Text = "Sold: " + Globals.global_user.Accounts[nr].Balance.ToString() + " " + Globals.global_user.Accounts[nr].Currency;
+            sold.Text = "Sold: " + Math.Round(Globals.global_user.Accounts[nr].Balance, 2).ToString() + " " + Globals.global_user.Accounts[nr].Currency;
 
         }
 
@@ -53,9 +54,9 @@ namespace BankClient.Pagess
                 result_text.Text = " Please select your Account!";
             else
             {
-                if (Globals.global_user.Accounts[nr].Balance >= uint.Parse(input_amount.Text))
+                if (Globals.global_user.Accounts[nr].Balance >= Convert.ToDouble(input_amount.Text))
                 {
-                    Globals.global_user.WithDraw(uint.Parse(input_amount.Text), Account_Select.Text);
+                    Globals.global_user.WithDraw(Convert.ToDouble(input_amount.Text), Account_Select.Text);
                     result_text.Text = "Withdraw successful!\nYour new balance is: " + Globals.global_user.Accounts[nr].Balance.ToString() + " in account " + Account_Select.Text;
                     sold.Text = "Sold: " + Globals.global_user.Accounts[nr].Balance.ToString() + " " + Globals.global_user.Accounts[nr].Currency;
                 }

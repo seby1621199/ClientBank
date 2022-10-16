@@ -16,7 +16,7 @@
             </StackPanel>
 
             <StackPanel Margin="30,0,0,0" RenderTransformOrigin="0.468,0.798">
-                <TextBlock x:Name="sold"  Text="Sold:" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Left" VerticalAlignment="Top"  />
+                <TextBlock x:Name="sold"  Text="Sold:" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0"  />
 
                 <ComboBox x:Name="Account_Select" Margin="0,18,5,5" Style="{StaticResource MaterialDesignComboBox}" Background="{x:Null}" Foreground="#FFC9C0C0" FontFamily="Yu Gothic" FontWeight="Bold"  materialDesign:HintAssist.Hint="Select your account" materialDesign:ThemeAssist.Theme="Dark" SelectionChanged="Account_Select_SelectionChanged" HorizontalAlignment="Left" Padding="5,4,5,4" Width="190"/>
                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0" >

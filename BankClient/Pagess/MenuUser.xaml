@@ -31,7 +31,7 @@
                 <Button x:Name="btn_Home" Background="{x:Null}" Height="40" BorderBrush="{x:Null}" Click="Btn_Home_Click">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Account" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="3,3,3,3" Width="20" Height="20"></materialDesign:PackIcon>
+                            <materialDesign:PackIcon Kind="Home" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="3,3,3,3" Width="20" Height="20"></materialDesign:PackIcon>
                             <TextBlock Text="Home" FontSize="16" FontFamily="Yu Gothic UI" FontWeight="Bold" Foreground="WhiteSmoke" Padding="3,3,3,3"/>
                         </StackPanel>
                     </Button.Content>
@@ -54,8 +54,14 @@
                         <TextBlock Text="Transfer" FontSize="16" FontFamily="Yu Gothic UI" FontWeight="Bold" Foreground="WhiteSmoke" Padding="3,3,3,3"/>
                     </StackPanel>
                 </Button>
+                    <Button x:Name="btn_Accounts" Background="{x:Null}" Height="40" BorderBrush="{x:Null}" Click="Btn_Home_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Accounts"  HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="3,3,3,3" Width="20" Height="20"/>
+                            <TextBlock Text="Accounts" FontSize="16" FontFamily="Yu Gothic UI" FontWeight="Bold" Foreground="WhiteSmoke" Padding="3,3,3,3"/>
+                        </StackPanel>
+                    </Button>
 
-            </StackPanel>
+                </StackPanel>
                 <Border Width="537" BorderBrush="#FF025EA4" BorderThickness="2,2,2,2" CornerRadius="7,7,7,7">
                 <Frame x:Name="Page" NavigationUIVisibility="Hidden" Width="540"></Frame>
             </Border>

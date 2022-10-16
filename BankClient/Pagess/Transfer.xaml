@@ -16,7 +16,12 @@
             </StackPanel>
 
             <StackPanel Margin="30,0,0,0" RenderTransformOrigin="0.468,0.798">
-                <ComboBox x:Name="Account_Select" Style="{StaticResource MaterialDesignComboBox}" Background="{x:Null}" Foreground="#FFC9C0C0" FontFamily="Yu Gothic" FontWeight="Bold"  materialDesign:HintAssist.Hint="Select your account" materialDesign:ThemeAssist.Theme="Dark" SelectionChanged="Account_Select_SelectionChanged" Padding="5,4,5,4" Width="190" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0"/>
+                <StackPanel Orientation="Horizontal">
+                  
+                    <ComboBox x:Name="Account_Select" Style="{StaticResource MaterialDesignComboBox}" Background="{x:Null}" Foreground="#FFC9C0C0" FontFamily="Yu Gothic" FontWeight="Bold"  materialDesign:HintAssist.Hint="Select your account" materialDesign:ThemeAssist.Theme="Dark" SelectionChanged="Account_Select_SelectionChanged" Padding="5,4,5,4" Width="190" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,20,0,0"/>
+                    <TextBlock x:Name="curs_text"   Text="Curs:" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Left" Margin="20,30,0,10" />
+                    <TextBlock x:Name="curs_valuar" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Left" Margin="20,30,0,10" />
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,0" >
                     <TextBlock  Text="Transfer to:" TextAlignment="Center" Foreground="#FFCFCFCF" FontSize="14" FontFamily="Yu Gothic Medium" HorizontalAlignment="Center" VerticalAlignment="Center" Width="73.7966666666667" />
                     <TextBox x:Name="input_user" BorderThickness="0,0,0,2" Foreground="White"  materialDesign:HintAssist.Hint="User / IBAN" BorderBrush="SeaGreen" FontSize="15px" Margin="10,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"  Padding="7,4,12,4" Width="121.353333333333" TextChanged="Input_user_TextChanged"/>

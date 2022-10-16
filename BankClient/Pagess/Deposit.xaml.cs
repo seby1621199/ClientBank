@@ -1,4 +1,4 @@
-﻿using BankClient.Classes;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,7 +13,7 @@ namespace BankClient.Pagess
         {
             InitializeComponent();
             ///de editat asta 
-            sold.Text = "Sold: " + Globals.global_user.Accounts[0].Balance.ToString()+" RON";
+            sold.Text = "Sold: " + Globals.global_user.Accounts[0].Balance.ToString() + " RON";
             LoadAccounts();
 
         }
@@ -38,7 +38,7 @@ namespace BankClient.Pagess
 
                 //  Globals.global_user.Balance += uint.Parse(input_amount.Text);
                 //Globals.global_user.Update();
-                int nr = Globals.global_user.Deposit(uint.Parse(input_amount.Text), Account_Select.Text);
+                int nr = Globals.global_user.Deposit(Convert.ToDouble(input_amount.Text), Account_Select.Text);
                 result_text.Text = "Deposit successful!\nYour new balance is: " + Globals.global_user.Accounts[nr].Balance.ToString() + " in account " + Account_Select.Text;
                 sold.Text = "Sold: " + Globals.global_user.Accounts[nr].Balance.ToString() + " " + Globals.global_user.Accounts[nr].Currency;
             }
@@ -56,9 +56,9 @@ namespace BankClient.Pagess
                 {
                     nr = i;
                 }
-               
+
             }
-            sold.Text = "Sold: " + Globals.global_user.Accounts[nr].Balance.ToString() + " " + Globals.global_user.Accounts[nr].Currency;
+            sold.Text = "Sold: " + Math.Round(Globals.global_user.Accounts[nr].Balance, 2).ToString() + " " + Globals.global_user.Accounts[nr].Currency;
 
         }
     }

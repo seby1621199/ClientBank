@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using BankClient;
+﻿using BankClient;
 using BankClient.Classes;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 [Serializable]
 internal class User
@@ -20,7 +20,7 @@ internal class User
     public string First_Name { get; set; }
     public string Last_Name { get; set; }
     public string IBAN { get; set; }
-   // public Card Card { get; set; }
+    // public Card Card { get; set; }
     public Cardul Cardul { get; set; }
     public List<Account> Accounts { get; set; } = new List<Account>();
     public User()
@@ -38,15 +38,15 @@ internal class User
         this.First_Name = user.First_Name;
         this.Last_Name = user.Last_Name;
         this.Cardul = user.Cardul;
-        
+
     }
-    
+
     //public void Transfer(User user2, uint money_transfer)
     //{
 
 
-        
-       
+
+
     //    this.Balance -= money_transfer;
     //    user2.Balance += money_transfer;
     //    Globals.m_Client = new MongoClient("mongodb+srv://bank:Drept1234!@cluster0.zwmtb.mongodb.net/Cluster0?retryWrites=true&w=majority");
@@ -72,11 +72,11 @@ internal class User
 
     public void Update()
     {
-        Globals.m_Collection.ReplaceOne(x => x.Username ==Username , this);
+        Globals.m_Collection.ReplaceOne(x => x.Username == Username, this);
     }
-    
-    
-    public int Deposit(uint money_deposit,string iban)
+
+
+    public int Deposit(double money_deposit, string iban)
     {
         int nr = -1;
         for (int i = 0; i < Accounts.Count; i++)
@@ -93,7 +93,7 @@ internal class User
         //this.Balance += money_deposit;
         // this.Update();
     }
-    public int WithDraw(uint money_withdraw, string iban)
+    public int WithDraw(double money_withdraw, string iban)
     {
         int nr = -1;
         for (int i = 0; i < Accounts.Count; i++)
@@ -107,12 +107,11 @@ internal class User
         }
         return nr;
 
-       // this.Balance -= money_withdraw;
+        // this.Balance -= money_withdraw;
         //this.Update();
     }
-    public async Task<Account> TransferAsync(int account_number,string user2_iban, uint money_transfer)
+    public async Task<Account> TransferAsync(int account_number, string user2_iban, double money_transfer)
     {
-        //find account 2
         var filter = Builders<User>.Filter.ElemMatch(x => x.Accounts, x => x.IBAN == user2_iban);
         User user2 = Globals.m_Collection.Find(filter).FirstOrDefault();
         int nr = user2.GetAccountNumber(user2_iban);
@@ -123,10 +122,9 @@ internal class User
         }
         else
         {
-            int converted =  await Globals.convert(this.Accounts[account_number].Currency, user2.Accounts[nr].Currency, (int)money_transfer);
-            //int converted_amount = Convert.ToInt32(converted);
+            double converted = await Globals.Convert(this.Accounts[account_number].Currency, user2.Accounts[nr].Currency, money_transfer);
             this.Accounts[account_number].Balance -= money_transfer;
-            user2.Accounts[nr].Balance += (uint)converted;
+            user2.Accounts[nr].Balance += converted;
         }
         this.Update();
         user2.Update();
@@ -148,7 +146,6 @@ internal class User
         this.Update();
     }
 
-    //get account number by iban
     public int GetAccountNumber(string iban)
     {
         int nr = -1;

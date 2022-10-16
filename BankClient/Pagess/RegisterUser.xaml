@@ -23,7 +23,7 @@
                 </materialDesign:PackIcon.Foreground>
             </materialDesign:PackIcon>
             <TextBlock TextWrapping="Wrap" Text="Virtual Bank" TextAlignment="Center" Foreground="WhiteSmoke" FontSize="40" FontWeight="Bold" FontFamily="Yu Gothic UI" Margin="0,10,0,0"  />
-            <TextBox x:Name="input_username"  Width="270" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="Username" BorderBrush="SeaGreen" FontSize="15px" Padding="4,4,4,4" Margin="0,25,0,0"/>
+            <TextBox x:Name="input_username"  Width="270" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="Username" BorderBrush="SeaGreen" FontSize="15px" Padding="4,4,4,4" Margin="0,25,0,0" TouchLeave="input_username_TouchLeave"/>
             <PasswordBox x:Name="input_password"  Width="270" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="Password" BorderBrush="SeaGreen" FontSize="15px" Padding="4,4,4,4" Margin="0,18,0,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,18,0,0"  >
                 <TextBox x:Name="input_firstName"  Width="130" BorderThickness="0,0,0,2" Foreground="White" materialDesign:HintAssist.Hint="First Name" BorderBrush="SeaGreen" FontSize="15px" VerticalAlignment="Center" Padding="4,4,4,4" Margin="10,0,7,0"/>

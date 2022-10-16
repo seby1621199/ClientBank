@@ -96,7 +96,10 @@ namespace BankClient.Pagess
 
         private void Btn_close_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            user_input.Text = "popescu";
+            password_input.Password = "drept1234";
+            //TODO: de scos
+            //this.Close();
 
         }
 

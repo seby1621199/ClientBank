@@ -20,6 +20,7 @@ namespace BankClient.Pagess
             btn_Transfer.Background = Brushes.Transparent;
             btn_Deposit.Background = Brushes.Transparent;
             btn_Withdraw.Background = Brushes.Transparent;
+            btn_Accounts.Background = Brushes.Transparent;
             Page.Content = null;
             if (sender == btn_Home)
                 Page.Content = new Home();
@@ -29,6 +30,8 @@ namespace BankClient.Pagess
                 Page.Content = new Withdraw();
             if (sender == btn_Transfer)
                 Page.Content = new Transfer();
+            if (sender == btn_Accounts)
+                Page.Content = new SelectAccount();
 
 
 

@@ -1,13 +1,11 @@
-﻿using MongoDB.Bson.IO;
-using MongoDB.Driver;
-using System.Net.Http;
+﻿using MongoDB.Driver;
 using System;
-using Newtonsoft.Json;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BankClient
 {
-     class Globals
+    class Globals
     {
         public static MongoDB.Driver.MongoClient m_Client = new MongoClient("mongodb+srv://bank:Drept1234!@cluster0.zwmtb.mongodb.net/Cluster0?retryWrites=true&w=majority");
         public static MongoDB.Driver.IMongoDatabase m_Database = Globals.m_Client.GetDatabase("bank");
@@ -15,9 +13,9 @@ namespace BankClient
         public static User global_user;
         public static string text = "nu s-a schimbat";
         public int x = 0;
-        public static async  Task<int> convert(string from, string to, int amount)
+        public static async Task<double> Convert(string from, string to, double amount)
         {
-            int result = 100;
+            double result = 100;
             //int amount = 5;
             //string from = "EUR";
             //string to = "RON";
@@ -37,11 +35,11 @@ namespace BankClient
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
                 dynamic tmp = Newtonsoft.Json.JsonConvert.DeserializeObject(body);
-                 result = (int)tmp.result.convertedAmount;
+                result = (double)tmp.result.convertedAmount;
                 //Console.WriteLine(body);
                 //Console.WriteLine(result);
             }
-           // int result_int= int.Parse(result);
+            // int result_int= int.Parse(result);
             return result;
         }
     }

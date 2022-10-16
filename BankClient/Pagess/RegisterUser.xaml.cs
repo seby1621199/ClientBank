@@ -124,5 +124,17 @@ namespace BankClient.Pagess
            // Card_Select.Foreground = new SolidColorBrush(Colors.White);
 
         }
+
+        private void input_username_DragLeave(object sender, DragEventArgs e)
+        {
+            result_text.Text = "test";
+
+        }
+
+        private void input_username_TouchLeave(object sender, TouchEventArgs e)
+        {
+            result_text.Text = "test";
+
+        }
     }
 }
