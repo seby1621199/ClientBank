@@ -8,7 +8,12 @@
 *These are of the (User Control) type and are displayed in a separate frame from the UserMenu when the menu buttons are pressed.*
 - Deposit
 - Withdraw
+- Accounts
+  - View Account
+  - Create Account
 - Transfer
+    - search by username
+    - search by IBAN
 ![UserMenu](https://i.imgur.com/wtBPqAg.png)
 
 ## User
@@ -29,7 +34,8 @@
  *The user's functionalities for each of his bank accounts.*
  - Deposit
  - Witdraw
- - Transfer *(In case of transfer in another currency, it is converted using an API.)*
+ - Transfer *(In case of transfer in another currency, it is converted using an API.)* 
+ 
  
  #### Database:
  *For the database, I opted for an object-oriented one (MongoDB), all information being stored in a single collection.*
