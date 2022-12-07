@@ -14,7 +14,7 @@
 - Transfer
     - search by username
     - search by IBAN
-![UserMenu](https://i.imgur.com/wtBPqAg.png)
+![UserMenu](https://i.imgur.com/Ship9MI_d.webp?maxwidth=760&fidelity=grand)
 
 ## User
 #### Cards:
